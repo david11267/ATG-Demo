@@ -1,36 +1,44 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import { useState } from "react";
+import "./App.css";
+import SelectGameType from "./components/SelectGameType";
+import BetTypeResults from "./components/BetTypeResults";
+import { Race } from "./types/types";
+
+export type GameTypes = "V75" | "V86" | "GS75";
 
 function App() {
-  const [count, setCount] = useState(0)
-  
+  const [selectedGameType, setSelectedGameType] = useState<GameTypes>("V75");
+  const [raceList, setRaceList] = useState<Race[] | null>(null);
 
   return (
     <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
+      <SelectGameType handleGameTypeChange={handleGameTypeChange} />
+      <BetTypeResults raceList={raceList} />
     </>
-  )
+  );
+
+  async function handleGameTypeChange(selectedGameType: GameTypes) {
+    setSelectedGameType(selectedGameType);
+
+    try {
+      const response = await fetch(
+        `https://www.atg.se/services/racinginfo/v1/api/products/${selectedGameType}`
+      );
+      if (!response.ok) {
+        throw new Error(`Error: ${response.status} ${response.statusText}`);
+      }
+
+      const data = await response.json();
+      console.log(data);
+      const raceList: Race[] = data.results;
+      setRaceList(raceList);
+      console.log(raceList);
+    } catch (error) {
+      console.error("Failed to fetch data:", error);
+    }
+
+    /////////////
+  }
 }
 
-export default App
+export default App;
