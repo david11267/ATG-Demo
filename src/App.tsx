@@ -16,10 +16,10 @@ function App() {
   }, [selectedGameType]);
 
   return (
-    <>
+    <div style={{ paddingTop: "1rem" }} className="container">
       <SelectGameType handleGameTypeChange={handleGameTypeChange} />
       {resultList && <BetTypeResults resultList={resultList} />}
-    </>
+    </div>
   );
 
   async function handleGameTypeChange(gameType: GameTypes) {
@@ -39,7 +39,6 @@ function App() {
       const data = await response.json();
 
       const results: Result[] = data.results;
-      console.log({ results: results });
       setResultList(results);
     } catch (error) {
       console.error("Failed to fetch data:", error);

@@ -9,13 +9,26 @@ interface Props {
 export default function RaceListItem({ race }: Props) {
   return (
     <div
-      style={{ padding: "1rem", margin: "1rem", backgroundColor: "beige" }}
+      style={{
+        backgroundColor: "beige",
+        padding: "1rem",
+        marginBottom: "2rem",
+      }}
       className="container "
     >
       <h2 className="row">
-        <div className="col-1">{race.number}</div>
-        <div className="col">{race.name}</div>
-        <div className="col-3">{stringToLocalTime(race.startTime)}</div>
+        <div className="col-1">
+          <strong>Nr: </strong>
+          {race.number}
+        </div>
+        <div className="col">
+          <strong>Race: </strong>
+          {race.name}
+        </div>
+        <div className="col-3">
+          <strong>Start: </strong>
+          {stringToLocalTime(race.startTime)}
+        </div>
       </h2>
       <div>
         <StartingHorsesAccordion starts={race.starts} />

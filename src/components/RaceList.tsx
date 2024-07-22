@@ -50,7 +50,6 @@ async function getRaceDataAsync(raceId: string) {
 
     const parsedResult = await result.json();
     const races: Race[] = parsedResult.races;
-    console.log({ races: races });
     return races;
   } catch (error) {
     console.error("Failed to fetch data:", error);

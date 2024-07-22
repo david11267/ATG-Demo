@@ -11,7 +11,7 @@ export default function BetTypeResults({ resultList }: Props) {
     <div>
       <h1>
         {resultList?.map((r) => (
-          <div key={r.id} style={{ padding: "1rem" }}>
+          <div key={r.id}>
             <div>
               {r.tracks.map((tr) => (
                 <strong key={tr.id}>{tr.name}&emsp;</strong>
