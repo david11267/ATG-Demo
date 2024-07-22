@@ -1,10 +1,6 @@
-import React from "react";
 import StartingHorsesAccordion from "./StartingHorsesAccordion";
 import { Race } from "../types/types";
-import {
-  stringToLocalTime,
-  stringToLocalTimeAndDate,
-} from "../utils/stringToTime";
+import { stringToLocalTime } from "../utils/stringToTime";
 
 interface Props {
   race: Race;

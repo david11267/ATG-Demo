@@ -1,4 +1,3 @@
-import React from "react";
 import { Start } from "../types/types";
 
 interface Props {

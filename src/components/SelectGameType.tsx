@@ -1,8 +1,7 @@
-import React from "react";
 import { GameTypes } from "../App";
 
 interface Props {
-  handleGameTypeChange: (selectedGameType: GameTypes) => void;
+  handleGameTypeChange: (gameType: GameTypes) => void;
 }
 
 export default function SelectGameType({ handleGameTypeChange }: Props) {
