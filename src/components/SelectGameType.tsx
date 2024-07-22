@@ -12,7 +12,7 @@ export default function SelectGameType({ handleGameTypeChange }: Props) {
     <select
       style={{ marginBottom: "1rem" }}
       className="form-select form-select-lg"
-      aria-label="Default select example"
+      aria-label="SelectGameType"
       onChange={(e) => handleGameTypeChange(e.target.value as GameTypes)}
     >
       {gameTypes.map((gt) => (

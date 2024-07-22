@@ -32,7 +32,7 @@ export default function RaceList({ raceId }: Props) {
   if (error) return <div>{error}</div>;
 
   return (
-    <div className="accordion accordion-flush" id="accordionFlushExample">
+    <div>
       {races && races.map((r: Race) => <RaceListItem key={r.id} race={r} />)}
     </div>
   );

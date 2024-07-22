@@ -24,6 +24,8 @@ export interface Race {
 export interface Start {
   number: number;
   horse: Horse;
+  id: string;
+  driver: Driver;
 }
 
 export interface Horse {
