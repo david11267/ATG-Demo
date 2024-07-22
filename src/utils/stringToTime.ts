@@ -1,5 +1,7 @@
 export function stringToLocalTimeAndDate(time: string) {
+  console.log(time);
   const dateAndTime = new Date(time).toLocaleString();
+  console.log(dateAndTime);
   return dateAndTime;
 }
 
