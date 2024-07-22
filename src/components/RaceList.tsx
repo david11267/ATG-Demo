@@ -1,15 +1,17 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import Loading from "./Loading";
-import AccordionSingle from "./AccordionSingle";
+import RaceListItem from "./RaceListItem";
+import { Race } from "../types/types";
 
 interface Props {
   raceId: string;
 }
 
-export default function RaceAccordion({ raceId }: Props) {
-  const [races, setRaces] = useState<any>(null); // Adjust type as needed
+export default function RaceList({ raceId }: Props) {
+  const [races, setRaces] = useState<Race[] | null>(null); // Adjust type as needed
   const [error, setError] = useState<string | null>(null);
   const [loading, setLoading] = useState<boolean>(true);
+
   useEffect(() => {
     setLoading(true);
     const fetchData = async () => {
@@ -31,15 +33,7 @@ export default function RaceAccordion({ raceId }: Props) {
 
   return (
     <div className="accordion accordion-flush" id="accordionFlushExample">
-      {races &&
-        races.map((r: any) => (
-          <AccordionSingle
-            raceId={r.id}
-            raceNumber={r.number}
-            raceName={r.name}
-            raceStartTime={r.startTime}
-          />
-        ))}
+      {races && races.map((r: Race) => <RaceListItem key={r.id} race={r} />)}
     </div>
   );
 }
@@ -55,8 +49,8 @@ async function getRaceDataAsync(raceId: string) {
     }
 
     const parsedResult = await result.json();
-    const races = parsedResult.races;
-    console.log(races);
+    const races: Race[] = parsedResult.races;
+    console.log({ races: races });
     return races;
   } catch (error) {
     console.error("Failed to fetch data:", error);

@@ -2,18 +2,18 @@ import { useState } from "react";
 import "./App.css";
 import SelectGameType from "./components/SelectGameType";
 import BetTypeResults from "./components/BetTypeResults";
-import { Race } from "./types/types";
+import { Race, Result } from "./types/types";
 
 export type GameTypes = "V75" | "V86" | "GS75";
 
 function App() {
   const [selectedGameType, setSelectedGameType] = useState<GameTypes>("V75");
-  const [raceList, setRaceList] = useState<Race[] | null>(null);
+  const [resultList, setResultList] = useState<Result[]>();
 
   return (
     <>
       <SelectGameType handleGameTypeChange={handleGameTypeChange} />
-      <BetTypeResults raceList={raceList} />
+      {resultList && <BetTypeResults resultList={resultList} />}
     </>
   );
 
@@ -29,10 +29,10 @@ function App() {
       }
 
       const data = await response.json();
-      console.log(data);
-      const raceList: Race[] = data.results;
-      setRaceList(raceList);
-      console.log(raceList);
+
+      const results: Result[] = data.results;
+      console.log({ results: results });
+      setResultList(results);
     } catch (error) {
       console.error("Failed to fetch data:", error);
     }

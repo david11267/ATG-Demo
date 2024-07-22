@@ -1,18 +1,16 @@
-import React, { Suspense } from "react";
-import { Race } from "../types/types";
-import Loading from "./Loading";
-import RaceAccordion from "./RaceAccordion";
+import { Result } from "../types/types";
+import RaceList from "./RaceList";
 
 interface Props {
-  raceList: Race[] | null;
+  resultList: Result[];
 }
 
-export default function BetTypeResults({ raceList }: Props) {
+export default function BetTypeResults({ resultList }: Props) {
   return (
-    <div className="border">
-      <div style={{ padding: "1rem" }} className="border">
-        {raceList?.map((r) => (
-          <div key={r.id} style={{ padding: "1rem" }} className="border">
+    <div>
+      <div>
+        {resultList?.map((r) => (
+          <div key={r.id} style={{ padding: "1rem" }}>
             <div>
               {r.tracks.map((tr) => (
                 <strong key={tr.id}>{tr.name}&emsp;</strong>
@@ -20,7 +18,7 @@ export default function BetTypeResults({ raceList }: Props) {
               <strong>{r.startTime}</strong>
               <br />
             </div>
-            <RaceAccordion raceId={r.id} />
+            <RaceList raceId={r.id} />
           </div>
         ))}
       </div>
