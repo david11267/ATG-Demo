@@ -3,6 +3,7 @@ import "./App.css";
 import SelectGameType from "./components/SelectGameType";
 import BetTypeResults from "./components/BetTypeResults";
 import { Result } from "./types/types";
+import { loadGamesData } from "./utils/api/fetchDataAsync";
 
 export type GameTypes = "V75" | "V86" | "GS75";
 
@@ -12,7 +13,13 @@ function App() {
 
   // is this making my app heavy since it checks if on render?
   useEffect(() => {
-    loadGamesData(selectedGameType);
+    const getData = async () => {
+      const gamesData = await loadGamesData(selectedGameType);
+      if (gamesData != undefined) {
+        setResultList(gamesData);
+      }
+    };
+    getData();
   }, [selectedGameType]);
 
   return (
@@ -24,24 +31,11 @@ function App() {
 
   async function handleGameTypeChange(gameType: GameTypes) {
     setSelectedGameType(gameType);
-    loadGamesData(gameType);
-  }
-
-  async function loadGamesData(selectedGameType: GameTypes) {
-    try {
-      const response = await fetch(
-        `https://www.atg.se/services/racinginfo/v1/api/products/${selectedGameType}`
-      );
-      if (!response.ok) {
-        throw new Error(`Error: ${response.status} ${response.statusText}`);
-      }
-
-      const data = await response.json();
-
-      const results: Result[] = data.results;
-      setResultList(results);
-    } catch (error) {
-      console.error("Failed to fetch data:", error);
+    const gamesData = await loadGamesData(gameType);
+    if (gamesData != undefined) {
+      setResultList(gamesData);
+    } else {
+      setResultList(undefined);
     }
   }
 }
