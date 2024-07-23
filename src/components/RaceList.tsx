@@ -9,7 +9,7 @@ interface Props {
 }
 
 export default function RaceList({ raceId }: Props) {
-  const [races, setRaces] = useState<Race[] | null>(null); // Adjust type as needed
+  const [races, setRaces] = useState<Race[] | null>(null);
   const [error, setError] = useState<string | null>(null);
   const [loading, setLoading] = useState<boolean>(true);
 
@@ -27,7 +27,7 @@ export default function RaceList({ raceId }: Props) {
     };
 
     fetchData();
-  }, [raceId]); // Depend on raceId to refetch when it changes
+  }, []);
 
   if (loading) return <Loading />;
   if (error) return <div>{error}</div>;

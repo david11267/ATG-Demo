@@ -45,12 +45,9 @@ export default function StartingHorsesAccordion({ starts }: Props) {
               className="accordion-collapse collapse"
               data-bs-parent={`#accordionFlush${s.id}`}
             >
-              <div
-                style={{ backgroundColor: "whitesmoke" }}
-                className="accordion-body"
-              >
+              <div className="accordion-body bg-secondary-subtle fs-6">
                 <div className="container">
-                  <div style={{ fontSize: "medium" }} className="row">
+                  <div className="row">
                     <div className="col">
                       <strong>Far</strong>
                       <div>{s.horse.pedigree.father.name}</div>

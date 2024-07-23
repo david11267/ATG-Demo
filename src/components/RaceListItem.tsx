@@ -8,15 +8,8 @@ interface Props {
 
 export default function RaceListItem({ race }: Props) {
   return (
-    <div
-      style={{
-        backgroundColor: "beige",
-        padding: "1rem",
-        marginBottom: "2rem",
-      }}
-      className="container "
-    >
-      <h2 className="row">
+    <div className="container p-2 mb-4 bg-secondary text-light">
+      <h2 className="row fs-3">
         <div className="col-1">
           <strong>Nr: </strong>
           {race.number}

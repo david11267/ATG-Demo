@@ -52,3 +52,5 @@ export interface Father {
   id: number;
   name: string;
 }
+
+export type GameTypes = "V75" | "V86" | "GS75";

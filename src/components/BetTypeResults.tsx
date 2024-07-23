@@ -9,7 +9,7 @@ interface Props {
 export default function BetTypeResults({ resultList }: Props) {
   return (
     <div>
-      <h1>
+      <h1 className="fs-1">
         {resultList?.map((r) => (
           <div key={r.id}>
             <div>

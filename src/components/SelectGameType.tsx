@@ -1,4 +1,4 @@
-import { GameTypes } from "../App";
+import { GameTypes } from "../types/types";
 
 interface Props {
   handleGameTypeChange: (gameType: GameTypes) => void;
@@ -9,8 +9,7 @@ export default function SelectGameType({ handleGameTypeChange }: Props) {
 
   return (
     <select
-      style={{ marginBottom: "1rem" }}
-      className="form-select form-select-lg"
+      className="form-select form-select-lg mb-4"
       aria-label="SelectGameType"
       onChange={(e) => handleGameTypeChange(e.target.value as GameTypes)}
     >
