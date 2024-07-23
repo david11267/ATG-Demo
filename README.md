@@ -1,4 +1,11 @@
+# How to run
+
+- Install dependencies: npm i
+- Run program: npm run
+- Run tests: npm test
+
 # NOTES FOR SELF
+
 - [Atg](https://www.atg.se/) are using bootstrap so i choose to style my demo using that too.
 
 # ATG frontend case
@@ -67,7 +74,7 @@ Then send an email to your contact at ATG with the git archive zip attached.
 
 It is allowed to use app generators like _create-react-app_, for example `npx create-react-app my-app --template typescript`. But before submitting the solution all of the configuration needs to be ejected (`npm run eject` or `yarn eject`).
 
-******Vite stuff*********************
+**\*\***Vite stuff\***\*\*\*\*\***\*\***\*\*\*\*\***
 
 # React + TypeScript + Vite
 
