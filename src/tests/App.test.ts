@@ -1,4 +1,4 @@
-import { assert, expect, test } from "vitest";
+import { assert, test } from "vitest";
 import { getRaceDataAsync, loadGamesData } from "../utils/api/fetchDataAsync";
 
 test("loads gamesData and check if we get any", async () => {
